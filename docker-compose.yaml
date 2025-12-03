@@ -1,0 +1,22 @@
+version: '3'
+services:
+  web:
+    image: nginx:alpine
+    container_name: my-web-server
+    restart: unless-stopped
+    volumes:
+      - ./html:/usr/share/nginx/html
+    networks:
+      - tunnel-net
+
+  tunnel:
+    image: cloudflare/cloudflared
+    container_name: cloudflare-tunnel
+    restart: unless-stopped
+    command: tunnel run --token ${TUNNEL_TOKEN}
+    networks:
+      - tunnel-net
+
+networks:
+  tunnel-net:
+    driver: bridge
