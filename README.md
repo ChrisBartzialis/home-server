@@ -52,3 +52,9 @@ Monitor: htop
 Logs: docker compose logs -f
 
 Shutdown: sudo shutdown now
+
+
+
+
+## Deployment & Security
+For details on the live server setup, permissions, and operational commands, please verify the [Server Operations Guide](docs/SERVER_SETUP.md).
